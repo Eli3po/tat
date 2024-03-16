@@ -6,8 +6,7 @@ import {
   fetchSheetSummary,
   formatToILS,
 } from "../../domain";
-import { Flat, Heat, Nested } from "@alptugidin/react-circular-progress-bar";
-import { useEffect } from "react";
+import { Flat } from "@alptugidin/react-circular-progress-bar";
 
 type GroupSummaryActivityProps = {
   groupName: string;
@@ -16,12 +15,6 @@ type GroupSummaryActivityProps = {
 export const TotalSummaryActivity = ({
   groupName,
 }: GroupSummaryActivityProps) => {
-  // const { data: collectors } = useQuery(
-  //   "collectors",
-  //   () => fetchSheetCollectors(sheetTitle),
-  //   { cacheTime: 3000 }
-  // );
-
   const { data: summary } = useQuery(
     ["summary", groupName],
     () => fetchSheetSummary(groupName, TOTAL_AMOUNT_RANGE),
@@ -34,9 +27,9 @@ export const TotalSummaryActivity = ({
   );
 
   return (
-    <Card background={"#ffe796"} minW="330px" maxW="l">
+    <Card background={"#ffe796"} minW="400px" minH={"200px"} maxW="l">
       <CardBody>
-        <Heading fontSize={"3xl"} color={"#9a4242"} fontFamily={"Assistant"}>
+        <Heading fontSize={"4xl"} color={"#9a4242"} fontFamily={"Assistant"}>
           {groupName}
         </Heading>
         <Stack
@@ -46,7 +39,7 @@ export const TotalSummaryActivity = ({
           direction={"row-reverse"}
         >
           <Stack alignItems={"center"} mt={"2"} spacing="1">
-            <Text fontFamily={"Assistant"} color="#1e6aac" fontSize="2xl">
+            <Text fontFamily={"Assistant"} color="#1e6aac" fontSize="3xl">
               {formatToILS(summary?.actualAmount)}
             </Text>
             <Stack alignItems={"center"} gap={"4px"} direction={"row-reverse"}>
@@ -54,7 +47,7 @@ export const TotalSummaryActivity = ({
                 <Text
                   lineHeight={"revert"}
                   fontFamily={"Assitant"}
-                  fontSize={"small"}
+                  fontSize={"large"}
                 >
                   מתוך
                 </Text>
@@ -62,12 +55,12 @@ export const TotalSummaryActivity = ({
                   lineHeight={"revert"}
                   fontFamily={"Assitant"}
                   fontWeight={"bold"}
-                  fontSize={"small"}
+                  fontSize={"large"}
                 >
                   :
                 </Text>
               </Stack>
-              <Text fontSize={"m"} fontFamily={"Assistant"}>
+              <Text fontSize={"x-large"} fontFamily={"Assistant"}>
                 {formatToILS(summary?.commitedAmount)}
               </Text>
             </Stack>
@@ -77,7 +70,6 @@ export const TotalSummaryActivity = ({
               progress={summary ? (percentage > 100 ? 100 : percentage) : 0}
               range={{ from: 0, to: 100 }}
               sign={{ value: "%", position: "end" }}
-              // text={"Matchy"}
               showMiniCircle={false}
               showValue={true}
               sx={{
@@ -94,7 +86,6 @@ export const TotalSummaryActivity = ({
                 textWeight: "bold",
                 textColor: "#000000",
                 textFamily: "Assistant" as any,
-                // text: "Matchy",
                 loadingTime: 1000,
                 miniCircleColor: "#ff0000",
                 miniCircleSize: 7,

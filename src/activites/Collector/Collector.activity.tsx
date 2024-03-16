@@ -1,6 +1,3 @@
-// a componret with label name Collector and the collectedAmount/commitedAmount presented in a card exampel:
-// john doe: 1000/2000
-
 import { Card, CardBody, Stack, Text } from "@chakra-ui/react";
 import { formatToILS } from "../../domain";
 import { Collector } from "../../domain/sheets-handler";
