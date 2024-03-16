@@ -12,7 +12,7 @@ export const Collectors = () => {
   const { data: collectors } = useQuery(
     "collectors",
     () => fetchAllCollectors(CLASSES_NAMES),
-    { cacheTime: 10 * 60 * 1000, refetchInterval: 10 * 60 * 1000 }
+    { cacheTime: 5 * 60 * 1000, refetchInterval: 5 * 60 * 1000 }
   );
 
   return (
