@@ -12,10 +12,9 @@ export const Collectors = () => {
   const { data: collectors } = useQuery(
     "collectors",
     () => fetchAllCollectors(CLASSES_NAMES),
-    { cacheTime: 60000, refetchInterval: 60000 }
+    { cacheTime: 10 * 60 * 1000, refetchInterval: 10 * 60 * 1000 }
   );
 
-  console.log("🚀 ~ Collectors ~ collectors:", collectors);
   return (
     <div className="slider">
       <div className="slide-track">
